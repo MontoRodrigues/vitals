@@ -1,0 +1,77 @@
+<div class="container-fluid" *ngIf="patient" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col">
+            <h2>{{patient.FirstName}} {{patient.LastName}} ({{getDOB(patient.DateOfBirth.seconds)}})</h2>
+            <!-- <p>{{patient.Address}}</p> -->
+        </div>
+    </div>
+
+    <app-navmenu [pid]="patientID"></app-navmenu>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Sugar Levels</h5>
+                    <app-sugar-chart [sugarLevelsList]="sugarLevels"></app-sugar-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Blood Pressure</h5>
+                    <app-bloodperssure-chart [bpList]="bloodPressure"></app-bloodperssure-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Blood Pressure Pulse</h5>
+                    <app-bloodperssure-pulse-chart [bpPulseList]="bloodPressure"></app-bloodperssure-pulse-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>SPO2</h5>
+                    <app-spo2chart [spo2List]="oxygen"></app-spo2chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>SPO2 Pulse</h5>
+                    <app-spo2-pulsechart [spo2List]="oxygen">
+                    </app-spo2-pulsechart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Temprature in F</h5>
+                    <app-temprature-chart [temprature]="temperature">
+                    </app-temprature-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

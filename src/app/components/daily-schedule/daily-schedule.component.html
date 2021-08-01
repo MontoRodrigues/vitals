@@ -1,0 +1,44 @@
+<div class="container-fluid" *ngIf="patient" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col">
+            <h2>{{patient.FirstName}} {{patient.LastName}}</h2>
+            <!-- <p>{{patient.Address}}</p> -->
+        </div>
+    </div>
+
+    <app-navmenu [pid]="patientID"></app-navmenu>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6>Todays Schdule
+                        <button type="button" class="btn btn-primary" (click)="setStatus()">Save</button>
+                    </h6>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Name</th>
+                                <th>instructions</th>
+                                <th>Time</th>
+                                <th>info</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let p of dailySchedule" [class]="getBackground(p)">
+                            <td>
+                                <input type="checkbox" [(ngModel)]="p.status">
+                            </td>
+                            <td [class]="p.type">{{p.name}}</td>
+                            <td>{{p.instructions}}</td>
+                            <td>{{p.date | date:'hh:mm a'}}</td>
+                            <td>
+                                <a *ngFor="let d of p.details" [href]="d" target="_blank">info</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,60 @@
+.card {
+    margin-top: 15px;
+}
+
+.bloodpressure {
+    width: 100%;
+    min-height: 100px;
+    background-color: #d1d1d1;
+    display: flex;
+}
+
+.bloodPressureStatus {
+    width: 25px;
+    background-color: white;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.bloodPressureStatus .bar {
+    width: 20px;
+    height: 50px;
+    padding: 3px;
+}
+
+.bloodPressureStatus .bar div {
+    height: 100%;
+    width: 100%;
+}
+
+.bloodPressureStatus .bar.low div {
+    background-color: red;
+}
+
+.bloodPressureStatus .bar.normal div {
+    background-color: #4eab53;
+}
+
+.bloodPressureStatus .bar.pre div {
+    background-color: #f2843b;
+}
+
+.bloodPressureStatus .bar.high1 div {
+    background-color: #e43631;
+}
+
+.bloodPressureStatus .bar.high2 div {
+    background-color: #e43631;
+}
+
+.bloodPressureValue {
+    width: calc(65% - 25px);
+    background-color: blue;
+}
+
+.bloodPressureText {
+    width: 35%;
+    background-color: green;
+}
+
+.bloodPressureText {}

@@ -1,0 +1,51 @@
+.patientlist {
+    margin-top: 20px;
+}
+
+.patientlist .card {
+    border-radius: 25px;
+    border: none;
+    -webkit-box-align: 0px 4px 5px 1px rgb(175 175 175 / 10%);
+    box-shadow: 0px 4px 5px 1px rgb(175 175 175 / 10%);
+    text-align: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.addPatient {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    flex-direction: column;
+    color: rgba(8, 155, 171, 1);
+    cursor: pointer;
+    min-height: 210px;
+}
+
+.addPatient:hover {
+    color: #f17e3a;
+}
+
+.addPatient span {
+    font-size: 20px;
+}
+
+.patientlist .card .card-text {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.patientImage {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.patientImage img {
+    max-height: 60%;
+}

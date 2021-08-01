@@ -1,0 +1,46 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div id="menu_bg" style="display: none;" onclick="toggleSideMenu()">
+
+</div>
+
+<div id="leftMenu" style="left: -300px;">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']" onclick="toggleSideMenu()">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['vitals']" onclick="toggleSideMenu()">Vitals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['schedule']" onclick="toggleSideMenu()">Schedule</a>
+        </li>
+    </ul>
+</div>
+
+<div class="header">
+    <div class="logo">
+        <div onclick="toggleSideMenu()"><i class="fas fa-bars"></i></div>
+        <div [routerLink]="['/']">
+            <span>Rodrigues</span> Patient Monitor
+        </div>
+    </div>
+
+    <div class="user">
+        {{displayName}}
+        <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle" (click)="logout()">
+          <i class="fas fa-power-off"></i>
+        </button>
+    </div>
+</div>
+
+
+<div class="main">
+    <router-outlet></router-outlet>
+</div>

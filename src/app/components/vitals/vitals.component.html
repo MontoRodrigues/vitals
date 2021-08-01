@@ -1,0 +1,172 @@
+<div class="app_main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <h3>Monitor Vitals</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <app-navmenu [pid]="patientID"></app-navmenu>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+
+                <div class="input-group mb-3">
+                    <input type="datetime-local" class="form-control form-control-sm" [(ngModel)]="bp_date" placeholder="Select Date">
+                    <button class="btn btn-outline-primary btn-sm" (click)="setNow()" type="button">Set Now</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Blood Pressure</h5>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Systolic</label>
+                                <input type="number" class="form-control form-control-sm" [(ngModel)]="bp.systolic" placeholder="Systolic">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Diastolic</label>
+                                <input type="number" class="form-control form-control-sm" [(ngModel)]="bp.diastolic" placeholder="Diastolic">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Pulse</label>
+                                <input type="number" class="form-control form-control-sm" [(ngModel)]="bp.pulse" placeholder="Pulse">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger app_error" *ngIf="bp_error.show">
+                                    {{bp_error.error}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Oximeter</h5>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">SpO2</label>
+                                <input type="number" class="form-control form-control-sm" [(ngModel)]="ox.SpO2" placeholder="Systolic">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Pulse</label>
+                                <input type="number" class="form-control form-control-sm" [(ngModel)]="ox.pulse" placeholder="Pulse">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger app_error" *ngIf="ox_error.show">
+                                    {{ox_error.error}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Glucometer</h5>
+                        <label class="form-label">Sugar Levels</label>
+                        <input type="number" class="form-control form-control-sm" [(ngModel)]="sg.sugarLevel" placeholder="Systolic">
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger app_error" *ngIf="sg_error.show">
+                                    {{sg_error.error}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Thermometer</h5>
+                        <label class="form-label">Temperature</label>
+                        <input type="number" class="form-control form-control-sm" [(ngModel)]="tmp.temp" placeholder="Systolic">
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger app_error" *ngIf="tmp_error.show">
+                                    {{tmp_error.error}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="col-lg-12">
+                {{getStatus(bp.systolic,bp.diastolic)}}
+            </div> -->
+
+            <div class="col-lg-12" style="margin-top:20px;">
+                <button type="button" class="btn btn-primary" (click)="addVitals()">Add Vitals</button>
+            </div>
+
+            <!-- <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="bloodpressure">
+                            <div class="bloodPressureStatus">
+                                <div class="bar low">
+                                    <div></div>
+                                </div>
+                                <div class="bar normal">
+                                    <div></div>
+                                </div>
+                                <div class="bar pre">
+                                    <div></div>
+                                </div>
+                                <div class="bar high1">
+                                    <div></div>
+                                </div>
+                                <div class="bar high2">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="bloodPressureValue">
+                                <div class="bp_actual_status">
+                                    <div class="bar low">
+                                        <div></div>
+                                    </div>
+                                    <div class="bar normal">
+                                        <div></div>
+                                    </div>
+                                    <div class="bar pre">
+                                        <div></div>
+                                    </div>
+                                    <div class="bar high1">
+                                        <div></div>
+                                    </div>
+                                    <div class="bar high2">
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bloodPressureText"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

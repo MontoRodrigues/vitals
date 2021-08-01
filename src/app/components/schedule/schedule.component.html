@@ -1,0 +1,126 @@
+<div class="app_main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h3>Prescriptions <span *ngIf="patient"> for {{patient.FirstName}} {{patient.LastName}}</span></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <app-navmenu [pid]="patientID"></app-navmenu>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h5>Schedule Details</h5>
+
+                                <div class="form-group">
+                                    <label>Schedule Name</label>
+                                    <input type="text" [(ngModel)]="scheduleInput.Name" class="form-control">
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input type="date" [(ngModel)]="startDate" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="date" [(ngModel)]="endDate" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Schedule Instruction</label>
+                                    <textarea class="form-control" [(ngModel)]="scheduleInput.Instruction" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h5>Schedule Timings</h5>
+                                <div class="form-group">
+                                    <label>Time 1</label>
+                                    <input type="time" [(ngModel)]="scheduleInput.Schedule.Time1" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Time 2</label>
+                                    <input type="time" [(ngModel)]="scheduleInput.Schedule.Time2" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Time 3</label>
+                                    <input type="time" [(ngModel)]="scheduleInput.Schedule.Time3" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Time 4</label>
+                                    <input type="time" [(ngModel)]="scheduleInput.Schedule.Time4" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Time 5</label>
+                                    <input type="time" [(ngModel)]="scheduleInput.Schedule.Time5" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <h5>Resource URL</h5>
+                                <div class="form-group">
+                                    <label>Refrence URL 1</label>
+                                    <input type="text" [(ngModel)]="scheduleInput.refremce.uri1" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Refrence URL 2</label>
+                                    <input type="text" [(ngModel)]="scheduleInput.refremce.uri3" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Refrence URL 3</label>
+                                    <input type="text" [(ngModel)]="scheduleInput.refremce.uri3" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Refrence URL 4</label>
+                                    <input type="text" [(ngModel)]="scheduleInput.refremce.uri4" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-primary" (click)="addSchedule()">Add Schedule</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Schedue Name</th>
+                                    <th>Schedule Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let p of scheduleList">
+                                    <td>
+                                        {{p.Name}}
+                                    </td>
+                                    <td>
+                                        <span class="time" *ngIf="p.Schedule.Time1!=null">{{p.Schedule.Time1}},</span>
+                                        <span class="time" *ngIf="p.Schedule.Time2!=null">{{p.Schedule.Time2}},</span>
+                                        <span class="time" *ngIf="p.Schedule.Time3!=null">{{p.Schedule.Time3}},</span>
+                                        <span class="time" *ngIf="p.Schedule.Time4!=null">{{p.Schedule.Time4}},</span>
+                                        <span class="time" *ngIf="p.Schedule.Time5!=null">{{p.Schedule.Time5}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

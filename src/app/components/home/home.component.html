@@ -1,0 +1,88 @@
+<div class="container-fluid patientlist">
+    <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-6">
+            <div class="card">
+                <div class="addPatient" (click)="toggleModel()">
+                    <i class="fas fa-plus-square"></i>
+                    <span>Add Patient</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="col-lg-2">
+            <div class="card">
+                <div class="addPatient" (click)="checkalert()">
+                    <i class="fas fa-plus-square"></i>
+                    <span>Check Alert</span>
+                </div>
+            </div>
+        </div> -->
+
+        <div *ngFor="let p of patientlist" class="col-lg-2 col-md-3 col-sm-6" (click)="gotoPatient(p.PatientID)">
+            <div class="card">
+
+                <div class="patientImage">
+                    <img src="https://iqonic.design/themes/xray/html/images/user/15.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{p.Name}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="app-model" *ngIf="showModel">
+    <div class="app-model-body">
+        <div class="header">Add New Patient</div>
+        <div class="body">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Patient Name</label>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <input type="text" class="form-control" [(ngModel)]="new_pation.FirstName" placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" [(ngModel)]="new_pation.LastName" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-control" [(ngModel)]="new_pation.Gender" placeholder="Gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" [(ngModel)]="new_pation.Mobile" placeholder="Mobile Number">
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" placeholder="Address">Address</label>
+                <textarea class="form-control" [(ngModel)]="new_pation.Address" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" [ngModel]="new_pation.DateOfBirth | date:'y-MM-dd'" (ngModelChange)="new_pation.DateOfBirth = $event" placeholder="Date of Birth">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="toggleModel()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="addPatient()">Save changes</button>
+        </div>
+    </div>
+</div>
+
+<div class="app-model-background" *ngIf="showModel"></div>

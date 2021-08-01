@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "patient-home-care-9d3e5": {
+      "hosting": {
+        "authtest": [
+          "patient-home-care-9d3e5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "vitals-8dcbd"
+  }
+}
