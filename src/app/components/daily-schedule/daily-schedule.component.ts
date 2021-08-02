@@ -4,7 +4,7 @@ import { IMedicine, ISchedule, IdailySchedule, IscheduleStatus, IscheduleStatusA
 import { IPatient } from './../../interface/Ipatient.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import Swal from 'sweetalert2'; 
 
 export interface scheduleStatus{
   docID:string;
@@ -299,16 +299,16 @@ export class DailyScheduleComponent implements OnInit {
       // else
       //   checkupdate=true;
     }
-    // console.log(checkupdate);
-    // if(checkupdate==true){
-    //   this.statusactionlist={
-    //     docID:this.dateID(),
-    //     date:this.dateID(),
-    //     status:j.status
-    //   };
-    //   this.getScheduleStatus();
-      this.ds.updateScheduleStatus(j,this.dateID());
-    //}
+
+    this.ds.updateScheduleStatus(j,this.dateID());
+   
+    Swal.fire({  
+      icon: 'success',  
+      title: 'Schedule Saved Scucessfully',  
+      showConfirmButton: true,
+      toast:false,
+      position:"center"
+    }); 
   }
 
   constructor(private  route:ActivatedRoute,private router: Router, private ds:DailyScheduleService )

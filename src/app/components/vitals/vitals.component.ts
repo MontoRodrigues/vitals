@@ -1,3 +1,4 @@
+import { IPatient } from './../../interface/Ipatient.interface';
 import { element } from 'protractor';
 import { IBloodPressure_input, IOxygen_input, ISugar_input, ITemperature_input, Ivitals_error } from './../../interface/Ivital.interface';
 import { VitalsService } from './../../services/vitals.service';
@@ -22,6 +23,8 @@ export class VitalsComponent implements OnInit{
 
   
 
+  patient: IPatient | undefined; 
+  private pl:any |undefined;
   patientID:string ="";
 
   bp:IBloodPressure_input = {
@@ -198,6 +201,11 @@ export class VitalsComponent implements OnInit{
       this.router.navigate(['/home']);
 
       vs.setPatientId(this.patientID);
+
+      this.pl =vs.patient$.subscribe(p =>{
+        this.patient=p;
+        console.log(p);
+      });
 
       //console.log(this.bp);
 

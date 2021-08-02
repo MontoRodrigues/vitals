@@ -1,8 +1,9 @@
 <div class="app_main">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4">
-                <h3>Monitor Vitals</h3>
+            <div class="col">
+                <h2 *ngIf="patient"><span style="font-size:20px;">Monitor Vitals for</span> {{patient.FirstName}} {{patient.LastName}}</h2>
+                <!-- <p>{{patient.Address}}</p> -->
             </div>
         </div>
         <div class="row">
