@@ -31,6 +31,8 @@ import { Spo2PulsechartComponent } from './components/shared/spo2-pulsechart/spo
 import { TempratureChartComponent } from './components/shared/temprature-chart/temprature-chart.component';
 import { NavmenuComponent } from './components/shared/navmenu/navmenu.component';
 import { DailyScheduleComponent } from './components/daily-schedule/daily-schedule.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { HospitalisationComponent } from './components/hospitalisation/hospitalisation.component';
 
 
 
@@ -54,7 +56,9 @@ import { DailyScheduleComponent } from './components/daily-schedule/daily-schedu
     Spo2PulsechartComponent,
     TempratureChartComponent,
     NavmenuComponent,
-    DailyScheduleComponent
+    DailyScheduleComponent,
+    ReportsComponent,
+    HospitalisationComponent
   ],
   imports: [
     BrowserModule,

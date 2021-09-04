@@ -115,12 +115,12 @@ export class ScheduleComponent implements OnInit {
 
       this.pl =scheduleService.patient$.subscribe(p =>{
         this.patient=p;
-        console.log(p);
+        //console.log(p);
       });
 
       this.sl =scheduleService.scheduleList$.subscribe(p =>{
         this.scheduleList=p;
-        console.log(p);
+        //console.log(p);
       });
       
   }

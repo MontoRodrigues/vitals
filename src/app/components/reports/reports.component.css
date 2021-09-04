@@ -1,0 +1,25 @@
+.img-container {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.img-container img {
+    display: block;
+}
+
+.img-container span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #9d0208;
+    padding: 4px 7px;
+    font-size: 12px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.img-container span:hover {
+    background-color: #d00000;
+    ;
+}

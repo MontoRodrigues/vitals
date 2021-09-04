@@ -1,0 +1,58 @@
+<div class="app_main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Reports <span *ngIf="patient"> for {{patient.FirstName}} {{patient.LastName}}</span></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h6> Report Details</h6>
+                        <div class="form-group">
+                            <label>Report Name</label>
+                            <input type="text" [(ngModel)]="report_input.reprtName" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Report Date</label>
+                            <input type="date" [ngModel]="report_date | date:'yyyy-MM-dd'" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Prescribed By</label>
+                            <select class="form-control" [(ngModel)]="report_input.Prescription_ID">
+                                <option *ngFor="let p of prescriptionList" [value]="p.docID"> {{p.DoctorName}} - {{getDate(p.VisitDate.seconds) | date}}</option>
+                              </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" [(ngModel)]="report_input.description" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-primary" (click)="addreports()">Add Reports</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Add Prescription Image</label>
+                            <input type="file" accept="image/*" class="form-control-file" (change)="addfiles($event)" multiple>
+                        </div>
+                        <div class="reports row">
+                            <div *ngFor="let im of f_list; let i = index" class="img-container col-lg-6">
+                                <span (click)="removeFile(i)">X</span>
+                                <img [src]="im.imgURL" class="img-thumbnail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -65,10 +65,12 @@ export class DailyScheduleService {
 
   getMedicineList():void{
     if(this.userId !=="" && this.patientID!==""){
-    let d= new Date();
-    d=new Date(d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-    console.log(d);
-    this.afs.collection<IMedicine>('/PatientMaster/'+ this.patientID +'/prescriptionMedicine/').valueChanges({ idField: 'docID' }).subscribe( c => {
+      let date= new Date();
+      let sdate = new Date(date.getFullYear() +'-' + (date.getMonth()+1) + "-" + date.getDate());
+      let edate =new Date(sdate.getTime()+ (1*24*60*60*1000));
+      sdate = new Date(sdate.getTime()- (1*24*60*60*1000));
+      //console.log(new Date(edate));
+    this.afs.collection<IMedicine>('/PatientMaster/'+ this.patientID +'/prescriptionMedicine/',ref => ref.where('EndDate','>',edate)).valueChanges({ idField: 'docID' }).subscribe( c => {
       this._medicineList.next(c)
       });
     }
@@ -76,9 +78,12 @@ export class DailyScheduleService {
 
   getScheduleList():void{
     if(this.patientID !=="" && this.userId !==""){
-      let d= new Date();
-      d=new Date(d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-      this.afs.collection<ISchedule>('/PatientMaster/'+ this.patientID +'/schedule').valueChanges({ idField: 'docID' }).subscribe( c => {
+      let date= new Date();
+      let sdate = new Date(date.getFullYear() +'-' + (date.getMonth()+1) + "-" + date.getDate());
+      let edate =new Date(sdate.getTime()+ (1*24*60*60*1000));
+      sdate = new Date(sdate.getTime()- (1*24*60*60*1000));
+      //console.log(new Date(edate));
+      this.afs.collection<ISchedule>('/PatientMaster/'+ this.patientID +'/schedule',ref => ref.where('EndDate','>',edate)).valueChanges({ idField: 'docID' }).subscribe( c => {
         this._scheduleList.next(c)
         });
     }

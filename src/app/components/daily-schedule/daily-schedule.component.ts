@@ -50,11 +50,11 @@ export class DailyScheduleComponent implements OnInit {
         this.statusListAction[this.statusactionlist.status[x].docID] =this.statusactionlist.status[x].status;
       }
     }
-    console.log(this.statusListAction);
+    //console.log(this.statusListAction);
   }
 
   getScheduleStatusDocID(docID:string,date:Date):boolean{
-    console.log(docID + "_"+ date.getHours() +"_" + date.getMinutes());
+    //console.log(docID + "_"+ date.getHours() +"_" + date.getMinutes());
     if(this.statusListAction==null)
       return false;
     else{
@@ -257,7 +257,7 @@ export class DailyScheduleComponent implements OnInit {
       // if(this.statusListAction !=null)
       //   this.setDefaultScheduleStatus();
 
-      console.log(this.dailySchedule);
+      //console.log(this.dailySchedule);
     }
   }
 
@@ -289,7 +289,7 @@ export class DailyScheduleComponent implements OnInit {
         docID:this.dailySchedule[x].docID + "_"+ this.dailySchedule[x].date.getHours() +"_" + this.dailySchedule[x].date.getMinutes(),
         status:this.dailySchedule[x].status
       }
-      console.log([s,this.dailySchedule[x].name]);
+      //console.log([s,this.dailySchedule[x].name]);
       j.status.push(s);
       
       // if(this.statusListAction.hasOwnProperty(this.dailySchedule[x].docID)){
@@ -344,7 +344,7 @@ export class DailyScheduleComponent implements OnInit {
         
         // if(this.dailySchedule.length==0)
           this.createData();
-        console.log(p);
+        //console.log(p);
       });
   }
 

@@ -204,7 +204,7 @@ export class VitalsComponent implements OnInit{
 
       this.pl =vs.patient$.subscribe(p =>{
         this.patient=p;
-        console.log(p);
+        //console.log(p);
       });
 
       //console.log(this.bp);
