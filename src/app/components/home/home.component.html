@@ -1,6 +1,13 @@
 <div class="container-fluid patientlist">
+
     <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="col-lg-12" style="margin-bottom: 20px;">
+            <img src="./assets/images/banner_home.jpg" style="max-width: 100%;">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 patient_card">
             <div class="card">
                 <div class="addPatient" (click)="toggleModel()">
                     <i class="fas fa-plus-square"></i>
@@ -10,20 +17,13 @@
         </div>
 
 
-        <!-- <div class="col-lg-2">
-            <div class="card">
-                <div class="addPatient" (click)="checkalert()">
-                    <i class="fas fa-plus-square"></i>
-                    <span>Check Alert</span>
-                </div>
-            </div>
-        </div> -->
 
-        <div *ngFor="let p of patientlist" class="col-lg-2 col-md-3 col-sm-6" (click)="gotoPatient(p.PatientID)">
+
+        <div *ngFor="let p of patientlist" class="col-lg-4 col-md-4 col-sm-6 patient_card" (click)="gotoPatient(p.PatientID)">
             <div class="card">
 
                 <div class="patientImage">
-                    <img src="https://iqonic.design/themes/xray/html/images/user/15.jpg">
+                    <img src="./assets/images/patient.svg">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{p.Name}}</h5>
@@ -75,6 +75,11 @@
             <div class="mb-3">
                 <label class="form-label">Date of Birth</label>
                 <input type="date" class="form-control" [ngModel]="new_pation.DateOfBirth | date:'y-MM-dd'" (ngModelChange)="new_pation.DateOfBirth = $event" placeholder="Date of Birth">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Height</label>
+                <input type="number" class="form-control" [ngModel]="new_pation.height" placeholder="Height">
             </div>
 
         </div>

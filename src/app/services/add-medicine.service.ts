@@ -18,8 +18,8 @@ export class AddMedicineService {
   private _prescription = new Subject<Iprescription>();
   prescription$ = this._prescription.asObservable();
 
-  private _patient = new Subject<IPatient>();
-  patient$ = this._patient.asObservable();
+  // private _patient = new Subject<IPatient>();
+  // patient$ = this._patient.asObservable();
 
   private _medicineList = new Subject<IMedicine[]>();
   medicineList$ = this._medicineList.asObservable();
@@ -35,20 +35,20 @@ export class AddMedicineService {
     this.getPrescription();
   }
 
-  getPatientInfo():void{
-    if(this.patientID !=="" && this.userId !==""){
-      this.afs.doc<IPatient>('PatientMaster/'+ this.patientID).valueChanges({ idField: 'docID' }).subscribe( p => {
-        this._patient.next(p);
-      });
-    }
-  }
+  // getPatientInfo():void{
+  //   if(this.patientID !=="" && this.userId !==""){
+  //     this.afs.doc<IPatient>('PatientMaster/'+ this.patientID).valueChanges({ idField: 'docID' }).subscribe( p => {
+  //       this._patient.next(p);
+  //     });
+  //   }
+  // }
 
   getPrescription():void{
     if(this.prescriptionID !=="" && this.userId !=="" && this.patientID!==""){
       this.afs.doc<Iprescription>('PatientMaster/'+ this.patientID +"/prescription/"+ this.prescriptionID).valueChanges({ idField: 'docID' }).subscribe( p => {
         this._prescription.next(p);
       });
-      this.getPatientInfo();
+      //this.getPatientInfo();
       this.getMedicineList();
     }
   };

@@ -24,7 +24,7 @@ export class PatientComponent implements OnInit {
   private ploxygen:any | undefined;
   private pltemperature:any | undefined;
 
-  patient: IPatient | undefined;
+  //patient: IPatient | undefined;
   sugarLevels:ISugar[]| undefined;
   bloodPressure:IBloodPressure[] | undefined;
   oxygen :IOxygen[] | undefined;
@@ -44,10 +44,10 @@ export class PatientComponent implements OnInit {
 
       ps.setPatientID(this.patientID);
 
-      this.pl =ps.patient$.subscribe(p =>{
-        this.patient=p;
-        //console.log(p);
-      });
+      // this.pl =ps.patient$.subscribe(p =>{
+      //   this.patient=p;
+      //   //console.log(p);
+      // });
 
       this.plSugar =ps.sugarLevels$.subscribe(p =>{
         this.sugarLevels=p;

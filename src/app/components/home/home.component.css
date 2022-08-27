@@ -49,3 +49,71 @@
 .patientImage img {
     max-height: 60%;
 }
+
+.patient_card {
+    margin-bottom: 10px;
+}
+
+
+/* --------- */
+
+.app-model-background {
+    z-index: 10001;
+    opacity: .2;
+    background-color: #000
+}
+
+.app-model,
+.app-model-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+
+.app-model {
+    z-index: 10002;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overflow: auto;
+    outline: 0
+}
+
+.app-model-body {
+    box-shadow: 0 .5rem 1rem rgb(0 0 0/10%);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0 solid rgba(0, 0, 0, .2);
+    border-radius: .42rem;
+    box-shadow: 0 .25rem .5rem rgb(0 0 0/10%);
+    outline: 0;
+    max-width: 500px;
+    margin: 1.75rem auto
+}
+
+.app-model-body .body {
+    width: 100%;
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1.75rem
+}
+
+.app-model-body .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid #ebedf3;
+    border-top-left-radius: .42rem;
+    border-top-right-radius: .42rem;
+    position: inherit;
+}
+
+
+/* .app_error{margin-top:10px;margin-bottom:0;font-size:12px}[class^=col-lg]{margin-bottom:10px}.thishour td{background-color:#535454;color:#fff}.missedSchedule td{color:#f94144!important}.Medicine{color:#43aa8b} */

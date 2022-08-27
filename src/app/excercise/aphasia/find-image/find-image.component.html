@@ -1,0 +1,68 @@
+<div class="excercise_container">
+    <button class="btn_home" (click)="gotoRoute('excercise')">
+        <img src="./assets/images/icons/home.png">
+    </button>
+
+    <div class="score" *ngIf="ObjectImageList.length >0">
+        <i class="fa-solid fa-medal"></i> Score: {{score}}/{{ObjectImageList.length}}
+    </div>
+    <div class="excercise" *ngIf="ObjectImageList.length >0">
+        <h1 class="excercise_title">Where is {{currentImage.name}}</h1>
+        <div class="image_list">
+
+            <div [class]="getClass(i)" *ngFor="let i of getImageList(currentImage.images); let in = index" (click)="imageClick(i)">
+                <div class="img_div">
+                    <img [src]="getImageURL(i)">
+                    <div class="wrong" *ngIf="!currentImage.images[i].isCorrect">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+                    <div class="right" *ngIf="currentImage.images[i].isCorrect">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="button_no">{{in+1}}</div>
+            </div>
+
+            <!-- <div class="image">
+                <div class="img_div">
+                    <img src="./assets/images/findImage.jpg">
+                    <div class="right">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="button_no">1</div>
+            </div>
+
+            <div class="image">
+                <div class="img_div">
+                    <img src="./assets/images/findImage.jpg">
+                    <div class="wrong">
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+                </div>
+                <div class="button_no">1</div>
+            </div> -->
+
+        </div>
+        <div class="actionList">
+            <button class="btn btn-primary" (click)="listenName()">
+                <i class="fa-solid fa-volume-high"></i> Name
+            </button>
+            <button class="btn btn-primary" (click)="listenSoundsLike()">
+                <i class="fa-solid fa-volume-high"></i> Sounds Like
+            </button>
+            <button class="btn btn-primary" (click)="listenHalfWord()">
+                <i class="fa-solid fa-volume-high"></i> Half Word
+            </button>
+        </div>
+    </div>
+
+    <div class="finalScore" *ngIf="ObjectImageList.length >0 && completed">
+        <h1>Your Final Score</h1>
+        <h1>{{score}} out of {{ObjectImageList.length}}</h1>
+        <button class="btn btn-primary" (click)="gotoRoute('excercise')">
+            <i class="fa-solid fa-house"></i> Go Home
+        </button>
+
+    </div>
+</div>

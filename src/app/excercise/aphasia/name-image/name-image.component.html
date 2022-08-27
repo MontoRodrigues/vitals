@@ -1,0 +1,46 @@
+<div class="excercise_container">
+    <button class="btn_home" (click)="gotoRoute('excercise')">
+        <img src="./assets/images/icons/home.png">
+    </button>
+
+    <div class="score" *ngIf="ObjectImageList.length >0">
+        <i class="fa-solid fa-medal"></i> Score: {{score}}/{{ObjectImageList.length}}
+    </div>
+
+    <div class="excercise" *ngIf="ObjectImageList.length >0">
+        <h1 class="excercise_title">Name the Image</h1>
+        <div class="nameImage">
+            <img [src]="getImageURL()">
+        </div>
+
+        <div class="actionList">
+            <button class="btn btn-success ansBtn" (click)="correctClick()">
+                <i class="fa-solid fa-check"></i> <span>1</span>
+             </button>
+            <button class="btn btn-danger ansBtn" (click)="wrongClick()">
+                <i class="fa-solid fa-xmark"></i><span>2</span>
+            </button>
+        </div>
+
+        <div class="actionList">
+            <button class="btn btn-primary" (click)="listenName()">
+            <i class="fa-solid fa-volume-high"></i> Listen Name
+        </button>
+            <button class="btn btn-primary" (click)="listenSoundsLike()">
+            <i class="fa-solid fa-volume-high"></i> Sounds Like
+        </button>
+            <button class="btn btn-primary" (click)="listenHalfWord()">
+            <i class="fa-solid fa-volume-high"></i> Half Word
+        </button>
+        </div>
+    </div>
+
+    <div class="finalScore" *ngIf="ObjectImageList.length >0 && completed">
+        <h1>Your Final Score</h1>
+        <h1>{{score}} out of {{ObjectImageList.length}}</h1>
+        <button class="btn btn-primary" (click)="gotoRoute('excercise')">
+            <i class="fa-solid fa-house"></i> Go Home
+        </button>
+
+    </div>
+</div>

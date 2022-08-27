@@ -1,0 +1,82 @@
+<div class="app_main" style="padding-top: 0px;">
+    <h3 style="align-items: center; display: flex; justify-content: space-between;">
+        <div style="display: flex;">
+            <button class="btn_home" (click)="gotoRoute('excercise')">
+                <i class="fas fa-home"></i>
+            </button>
+            <button class="btn_home" style="padding-left: 5px;" (click)="playAll()">
+                <i class="fa-solid fa-play"></i>
+            </button>
+        </div>
+        Excercise Helper Home
+    </h3>
+
+    <div class="excerciseList">
+        <div *ngFor="let ex of execercieseList; ; let i = index" class="category">
+
+            <h3 class="categotyTitle">{{ex.category}}
+
+                <button class="playCategory" (click)="playCategory(i)">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+            </h3>
+            <div class="categoryList">
+
+                <div class="card excercise" *ngFor="let exl of ex.data;">
+                    <img [src]="getImageURL(exl)" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{exl.name}}</h5>
+                        <p class="card-text">{{exl.description}}</p>
+                        <button class="playCategory playExercise" (click)="playExcercise(exl)">
+                           Play <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="PlayexcerciseContainer" *ngIf="playExcerciseList.length >0">
+
+    <div style="align-items: center; display: flex; justify-content: space-between; width: 100%;">
+        <div class="timer">Starts in: {{this.timer}}</div>
+
+        <div>Check If Empty:{{CheckIfStepIsEmpty()}}</div>
+        <button class="btn_home" (click)="Stop()">
+               <i class="fa-solid fa-xmark"></i>
+            </button>
+    </div>
+
+    <div class="currentExcercise">
+        <h3>{{currentExcercise.name}}</h3>
+        <img [src]="getImageURL(currentExcercise)">
+        <p>{{currentExcercise.description}}</p>
+        <button class="timer">Start Now</button >
+    </div>
+
+
+</div>
+
+<div class="PlayStepsContainer" *ngIf="CheckIfStepIsEmpty()">
+
+    <div style="align-items: center; display: flex; justify-content: space-between; width: 100%;">
+        <div class="timer">Starts in: {{this.timer}}</div>
+        <button class="btn_home" (click)="Stop()">
+               <i class="fa-solid fa-xmark"></i>
+            </button>
+    </div>
+
+    <div class="currentExcercise">
+        <h3>{{currentExcercise.name}}</h3>
+        <img [src]="getImageURL(currentExcercise)">
+        <p>{{currentExcercise.description}}</p>
+        <button class="timer">Start Now</button >
+    </div>
+
+
+</div>

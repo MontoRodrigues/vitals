@@ -74,6 +74,7 @@ export class PatientService {
     }
   }
 
+  
 
   onAuthComplete (uid:string) :void{
     this.userId =uid;

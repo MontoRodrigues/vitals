@@ -1,0 +1,167 @@
+<div class="app_main">
+    <h3 style="    align-items: center; display: flex; justify-content: space-between;">
+        <button class="btn_home" (click)="gotoRoute('excercise')">
+        <i class="fas fa-home"></i>
+    </button> Add data for Excercise Helper
+        <button type="button" class="btn btn-primary" #btn1 (click)="addExcercise()"> Add Data</button>
+    </h3>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="eq">
+                            <canvas id="visualizer"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Exercise Category </label>
+                            <input type="text" class="form-control" [(ngModel)]="excercise.category">
+                            <small class="form-text text-muted">Please enter the Excercise Category</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Exercise Type </label>
+                            <input type="text" class="form-control" [(ngModel)]="excercise.type">
+                            <small class="form-text text-muted">Please enter the Excercise Type</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Exercise Name </label>
+                            <input type="text" class="form-control" [(ngModel)]="excercise.name">
+                            <small class="form-text text-muted">Please enter the Excercise Name</small>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label>Exercise Duration </label>
+                            <input type="text" class="form-control" [(ngModel)]="excercise.duration">
+                            <small class="form-text text-muted">Please enter the Excercise Duration</small>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="audio">
+                            <div>Audio description</div>
+                            <button type="button" *ngIf="!excerciseRecording && !stepsRecording" (click)="startRecordig('excecise')"><i class="fa-solid fa-microphone"></i></button>
+                            <button type="button" *ngIf="excerciseRecording" (click)="stopRecording()"><i class="fa-solid fa-stop"></i></button>
+                            <button type="button" *ngIf="getObjectLength(excercise.audio)>0 && !excercisePlay" (click)="playAudio(excercise.audio)"><i class="fa-solid fa-circle-play"></i></button>
+
+                        </div>
+                        <div class="browse_Image">
+                            <img *ngIf="excerciseImage.file" [src]="excerciseImage.url" class="img-thumbnail">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" [accept]="accept_file" (change)="addfiles($event,'excercise')">
+                                    <label class="custom-file-label">Upload Default Image</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Excercise Duration </label>
+                            <input type="number" class="form-control" [(ngModel)]="excercise.duration">
+                            <small class="form-text text-muted">Please enter the Excercise duration</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Exercise description</label>
+                            <textarea class="form-control" [(ngModel)]="excercise.description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Steps</h5>
+                        <div class="audio">
+                            <div>Audio description</div>
+                            <button type="button" *ngIf="!excerciseRecording && !stepsRecording" (click)="startRecordig('')"><i class="fa-solid fa-microphone"></i></button>
+                            <button type="button" *ngIf="stepsRecording" (click)="stopRecording()"><i class="fa-solid fa-stop"></i></button>
+                            <button type="button" *ngIf="getObjectLength(steps.audio)>0 && !stepsPlay" (click)="playAudio(steps.audio)"><i class="fa-solid fa-circle-play"></i></button>
+                        </div>
+                        <div class="browse_Image">
+                            <img *ngIf="stepImage.file" [src]="stepImage.url" class="img-thumbnail">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" [accept]="accept_file" (change)="addfiles($event,'step')">
+                                    <label class="custom-file-label">Upload Step Image</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Steps Duration </label>
+                            <input type="number" class="form-control" [(ngModel)]="steps.duration">
+                            <small class="form-text text-muted">Please enter the steps duration</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Exercise description</label>
+                            <textarea class="form-control" [(ngModel)]="steps.description"></textarea>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary" (click)="addSteps()" #btn>Add Step</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card ">
+                    <div class="card-body ">
+                        <h5 class="card-title ">List of Steps</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Duration</th>
+                                    <th>Description</th>
+                                    <th>Audio</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let s of excercise.steps; let i = index">
+                                <td style="width: 200px;">
+                                    <img [src]="s.image.url" class="img-thumbnail">
+                                </td>
+
+                                <td style="vertical-align: middle;">
+                                    {{s.duration}}
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    {{s.description}}
+                                </td>
+                                <td style="width: 50px; vertical-align: middle;">
+                                    <button type="button" class="actionBtn" (click)="playAudio(s.audio)"><i class="fa-solid fa-circle-play"></i></button>
+                                </td>
+                                <td style="width: 145px; vertical-align: middle;">
+                                    <button type="button" class="actionBtn_sm" (click)="deleteSteps(i)"><i class="fa-solid fa-trash"></i></button>
+
+                                    <button type="button" class="actionBtn_sm" *ngIf="i<excercise.steps.length-1" (click)="moveSteps(i,'down')"><i class="fa-solid fa-arrow-down"></i></button>
+                                    <button type="button" class="actionBtn_sm" *ngIf="i!=0" (click)="moveSteps(i,'up')"><i class="fa-solid fa-arrow-up"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <audio [src]="audioSource " id="audio " controls autoplay style="display: none; "></audio>
+    </div>
+</div>

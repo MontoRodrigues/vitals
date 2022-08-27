@@ -1,18 +1,19 @@
-import { scheduleStatus } from './../components/daily-schedule/daily-schedule.component';
+
 
 export interface Iprescription {
     DoctorName: string;
     VisitDate: {seconds:number; nanoseconds:number;};
     nextVisit: {seconds:number; nanoseconds:number;};
-    imageName: string;
+    imageName: string[];
     docID:string;
 }
+
 
 export interface Iprescription_input {
     DoctorName:string | null;
     VisitDate: Date | null;
     nextVisit: Date | null;
-    imageName: string | null;
+    imageName: string[];
 }
 
 
@@ -25,6 +26,13 @@ export interface IMedicine {
     prescriptionID: string;
     docID:string;
     Schedule:{
+        Time1:string | null;
+        Time2:string | null;
+        Time3:string | null;
+        Time4:string | null;
+        Time5:string | null;
+    },
+    weekDay:{
         Time1:string | null;
         Time2:string | null;
         Time3:string | null;
@@ -46,12 +54,19 @@ export interface IMedicine_input {
         Time3:string | null;
         Time4:string | null;
         Time5:string | null;
+    },
+    weekDay:{
+        Time1:string | "";
+        Time2:string | "";
+        Time3:string | "";
+        Time4:string | "";
+        Time5:string | "";
     }
 }
 
 export interface ISchedule{
-    StartDate: {seconds:number; nanoseconds:number;};
-    EndDate: {seconds:number; nanoseconds:number;};
+    // StartDate: {seconds:number; nanoseconds:number;};
+    // EndDate: {seconds:number; nanoseconds:number;};
     Name:string | null;
     docID:string,
     Schedule:{
@@ -72,8 +87,8 @@ export interface ISchedule{
 }
 
 export interface ISchedule_Input{
-    StartDate: Date | null;
-    EndDate: Date | null;
+    // StartDate: Date | null;
+    //EndDate: Date | null;
     Name:string | null;
     Schedule:{
         Time1:string | null;

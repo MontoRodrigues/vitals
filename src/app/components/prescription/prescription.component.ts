@@ -1,4 +1,5 @@
 import { IPatient } from './../../interface/Ipatient.interface';
+import { IFileList } from '../../common/components/fileupload/fileList.interface';
 import { Iprescription, Iprescription_input } from './../../interface/prescription';
 import { PrescriptionService } from './../../services/prescription.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +17,7 @@ export class PrescriptionComponent implements OnInit {
   private pl:any | undefined;
   private psl:any | undefined;
 
-  patient: IPatient | undefined;
+  // patient: IPatient | undefined;
 
   visitDate:Date | undefined
   nextVisitDate:Date | undefined
@@ -26,14 +27,14 @@ export class PrescriptionComponent implements OnInit {
     DoctorName:null,
     VisitDate: null,
     nextVisit: null,
-    imageName: null,
+    imageName: []
   }
 
   gotoAddMedicine(id:string):void{
     this.router.navigate(['/addmedicine', {pid:this.patientID,psid:id}]);
   }
 
-  prescriptionFile:File | null= null;
+  prescriptionFile:IFileList[] = [];
 
   getDate(secs:number): Date{
     return new Date(secs * 1000);
@@ -41,10 +42,14 @@ export class PrescriptionComponent implements OnInit {
   getImageURL(imagename:string){
     return "https://firebasestorage.googleapis.com/v0/b/vitals-8dcbd.appspot.com/o/Prescription%2F"+ this.patientID +"%2F" + imagename + "?alt=media";
   }
-  
-  FileuploadChange(e: any){
-    this.prescriptionFile = e.target.files.item(0);
+
+  public getPrescriptioFiles(e:IFileList[]){
+    this.prescriptionFile =e;
   }
+  
+  // FileuploadChange(e: any){
+  //   this.prescriptionFile = e.target.files.item(0);
+  // }
 
   addPrescription():void{
     
@@ -86,6 +91,7 @@ export class PrescriptionComponent implements OnInit {
     if(this.patientID=="")
       this.router.navigate(['/home']);
 
+      
       ps.setPatientID(this.patientID);
 
       this.psl =ps.prescription$.subscribe(p =>{
@@ -93,12 +99,24 @@ export class PrescriptionComponent implements OnInit {
         //console.log(p);
       });
 
-      this.pl =ps.patient$.subscribe(p =>{
-        this.patient=p;
-        //console.log(p);
-      });
+      // this.pl =ps.patient$.subscribe(p =>{
+      //   this.patient=p;
+      //   //console.log(p);
+      // });
   }
 
+  //---------image preview
+  public peview_image:{show:boolean;img_url:string | null;}={show:false, img_url:null};
+
+  public img_click(i:any){
+    this.peview_image.img_url=this.getImageURL(i);
+    this.peview_image.show=true;
+  }
+
+  public close_img_preview(){
+    this.peview_image.show=false;
+  }
+ 
   ngOnInit(): void {
   }
 

@@ -17,13 +17,13 @@ export class ScheduleComponent implements OnInit {
   private pl:any |undefined;
   private sl:any |undefined;
 
-  patient: IPatient | undefined;
+  //patient: IPatient | undefined;
   scheduleList: ISchedule[] | undefined;
   startDate:string ="";
   endDate:string ="";
   scheduleInput:ISchedule_Input ={
-    StartDate: null,
-    EndDate: null,
+    // StartDate: null,
+    // EndDate: null,
     Name:null,
     Schedule:{
         Time1:null,
@@ -42,16 +42,16 @@ export class ScheduleComponent implements OnInit {
   };
 
   addSchedule():void{
-    if(this.startDate =="" || this.endDate==""){
-      Swal.fire({  
-        icon: 'error',  
-        title: 'Please select start and end dates',  
-        showConfirmButton: true,
-        toast:false,
-        position:"center"
-      }); 
-    return;
-    }
+    // if(this.startDate =="" || this.endDate==""){
+    //   Swal.fire({  
+    //     icon: 'error',  
+    //     title: 'Please select start and end dates',  
+    //     showConfirmButton: true,
+    //     toast:false,
+    //     position:"center"
+    //   }); 
+    // return;
+    // }
 
     if(this.scheduleInput.Name ==null){
       Swal.fire({  
@@ -77,13 +77,13 @@ export class ScheduleComponent implements OnInit {
       }); 
     return;
     }
-    this.scheduleInput.StartDate = new Date(this.startDate);
-    this.scheduleInput.EndDate = new Date(this.endDate);
+    //this.scheduleInput.StartDate = new Date(this.startDate);
+    //this.scheduleInput.EndDate = new Date(this.endDate);
     this.scheduleService.addSchedule(this.scheduleInput);
 
     this.scheduleInput ={
-      StartDate: null,
-      EndDate: null,
+      //StartDate: null,
+      //EndDate: null,
       Name:null,
       Schedule:{
           Time1:null,
@@ -113,10 +113,10 @@ export class ScheduleComponent implements OnInit {
 
       scheduleService.setPatientID(this.patientID);
 
-      this.pl =scheduleService.patient$.subscribe(p =>{
-        this.patient=p;
-        //console.log(p);
-      });
+      // this.pl =scheduleService.patient$.subscribe(p =>{
+      //   this.patient=p;
+      //   //console.log(p);
+      // });
 
       this.sl =scheduleService.scheduleList$.subscribe(p =>{
         this.scheduleList=p;

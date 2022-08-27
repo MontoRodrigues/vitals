@@ -57,4 +57,205 @@
     background-color: green;
 }
 
-.bloodPressureText {}
+.bp_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bp_info table {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.bp_info img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.bp_info p {
+    font-size: 11px;
+    text-align: justify;
+}
+
+.bp_refrence,
+.ox_refrence,
+.sg_refrence,
+.tmp_refrence {
+    font-size: 9px;
+    margin-bottom: 20px;
+}
+
+.bp_refrence .bp_refrence_text,
+.ox_refrence .ox_refrence_text,
+.sg_refrence .sg_refrence_text,
+.tmp_refrence .tmp_refrence_text {
+    display: flex;
+    text-transform: uppercase;
+}
+
+.bp_refrence .bp_refrence_text div,
+.tmp_refrence .tmp_refrence_text div {
+    width: 25%;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-top: -15px;
+    border-right: 1px solid;
+}
+
+.ox_refrence .ox_refrence_text div {
+    width: 20%;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-top: -15px;
+    border-right: 1px solid;
+}
+
+.sg_refrence .sg_refrence_text div {
+    width: 33.33%;
+    overflow-wrap: break-word;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-top: -15px;
+    border-right: 1px solid;
+}
+
+.bp_refrence .bp_refrence_text div:last-child,
+.ox_refrence .ox_refrence_text div:last-child,
+.sg_refrence .sg_refrence_text div:last-child,
+.tmp_refrence .tmp_refrence_text div:last-child {
+    border: none !important;
+}
+
+
+/* .normal {
+    width: 20%;
+    background: rgb(166, 206, 57);
+}
+
+.elevated,
+.concerning {
+    width: 40%;
+    background: rgb(255, 236, 0);
+} */
+
+.status {
+    text-transform: uppercase;
+}
+
+.bp_refrence .low {
+    width: 25%;
+    background: #ff758f;
+}
+
+.bp_refrence .normal {
+    width: 50%;
+    background: #99d98c;
+}
+
+.bp_refrence .elevated {
+    width: 75%;
+    background: #ff4d6d;
+}
+
+.bp_refrence .high {
+    width: 100%;
+    background: #c9184a;
+}
+
+.ox_refrence .normal {
+    width: 100%;
+    background: #97c85e;
+}
+
+.ox_refrence .concerning {
+    width: 80%;
+    background: #f9cf48;
+}
+
+.ox_refrence .low {
+    width: 60%;
+    background: #eb9d5c;
+}
+
+.ox_refrence .danger {
+    width: 40%;
+    background: #e15d5a;
+}
+
+.ox_refrence .cyanosis {
+    width: 20%;
+    background: #b94758;
+}
+
+.sg_refrence .normal {
+    width: 33.33%;
+    background: #c0f648;
+}
+
+.sg_refrence .borderline {
+    width: 66.66%;
+    background: #eff64e;
+}
+
+.sg_refrence .high {
+    width: 100%;
+    background: #EE3E33;
+}
+
+.tmp_refrence .hypothermia {
+    width: 25%;
+    background: #1a64c5;
+}
+
+.tmp_refrence .normal {
+    width: 50%;
+    background: #83b4f6;
+}
+
+.tmp_refrence .low {
+    width: 75%;
+    background: #f49e5d;
+}
+
+.tmp_refrence .high {
+    width: 100%;
+    background: #ed3833;
+}
+
+
+/* 
+<div>cyanosis</div>
+                                        <div>danger</div>
+                                        <div>low</div>
+                                        <div>concerning</div>
+                                        <div>normal</div> */
+
+
+/* 
+.high,
+.low {
+    width: 60%;
+    background: rgb(255, 182, 0);
+}
+
+.stage2,
+.brain {
+    width: 60%;
+    background: rgb(186, 58, 2);
+}
+
+.crissis,
+.danger {
+    width: 100%;
+    background: rgb(153, 7, 17);
+}
+
+.alert-danger {
+    font-size: 12px;
+} */

@@ -32,7 +32,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     Gender: null,
     Mobile:"",
     Address:"",
-    DateOfBirth: null
+    DateOfBirth: null,
+    height:null
   }
 
   showModel:boolean =false;
@@ -61,6 +62,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     { 
       this._home.addPatient(this.new_pation);
       this.showModel=false;
+
+      this.new_pation ={
+        FirstName: "",
+        LastName: "",
+        Gender: null,
+        Mobile:"",
+        Address:"",
+        DateOfBirth: null,
+        height:null
+      };
+
       Swal.fire({  
         position: 'top-end',  
         icon: 'success',  

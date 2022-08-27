@@ -1,0 +1,105 @@
+<div class="app_main">
+    <h3 style="    align-items: center; display: flex; justify-content: space-between;">
+        <button class="btn_home" (click)="gotoRoute('excercise')">
+        <i class="fas fa-home"></i>
+    </button> Add data for Find Image/ Name Image
+        <button type="button" class="btn btn-primary" (click)="add_excercise_data()" #btn> Add Data</button>
+    </h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Object/Image Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="ObjectName">
+                            <small class="form-text text-muted">Please enter the image/object Name</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Object/Image Type</label>
+                            <input type="text" class="form-control" [(ngModel)]="ObjectType">
+                            <small class="form-text text-muted">Please enter the image/object Type</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-mg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Capture Audio</h5>
+
+                        <section class="main-controls">
+                            <div class="eq">
+                                <canvas id="visualizer"></canvas>
+                            </div>
+
+                            <div class="button">
+                                <button class="record btn btn-primary" *ngIf="btnDisable" (click)="record()"><i class="fas fa-microphone-alt"></i></button>
+                                <button class="stop btn btn-primary" *ngIf="!btnDisable" (click)="stop()"><i class="fas fa-stop-circle"></i></button>
+                            </div>
+                        </section>
+
+
+                        <section class="sound-clips">
+
+                            <audio [src]="audioSource" id="audio" controls autoplay style="display: none;"></audio>
+
+                            <table class="table">
+                                <tr *ngFor="let a of audioList; let i = index">
+                                    <td style="vertical-align: middle; width: 20px;">{{i}}</td>
+                                    <td style="width: 60%;">
+                                        <select class="form-control" [(ngModel)]="a.type">
+                                            <option>Name</option>
+                                            <option>Sounds Like</option>
+                                            <option>Half word</option>
+                                          </select>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary play" (click)="playAudio(a)">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-primary delete" (click)="deleteAudio(i)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-mg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Images</h5>
+                        <!-- <div>
+
+                        </div> -->
+
+                        <app-fileupload (getFiles)="getImages($event)" header_text="Select Images" accept_file="image/*" #fupload></app-fileupload>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Object/Image List</h5>
+                        <table class="table">
+                            <tr *ngFor="let a of ObjectImageList">
+                                <td>{{a.name}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

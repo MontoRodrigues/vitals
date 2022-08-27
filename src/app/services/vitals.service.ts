@@ -2,7 +2,7 @@ import { IPatient } from './../interface/Ipatient.interface';
 import { Subject } from 'rxjs';
 import { AuthuserService } from './authuser.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { IBloodPressure_input, IOxygen_input, ISugar_input, ITemperature_input } from './../interface/Ivital.interface';
+import { IBloodPressure_input, IOxygen_input, ISugar_input, ITemperature_input, IWeight_input } from './../interface/Ivital.interface';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -13,25 +13,25 @@ export class VitalsService {
   userId :string="";
   private patientId:string ="";
 
-  private _patient = new Subject<IPatient>();
-  patient$ = this._patient.asObservable();
+  // private _patient = new Subject<IPatient>();
+  // patient$ = this._patient.asObservable();
 
   setPatientId(uid:string){
     this.patientId=uid;
-    this.getPatientInfo();
+    //this.getPatientInfo();
   }
 
-  getPatientInfo():void{
-    if(this.patientId !=="" && this.userId !==""){
-      this.afs.doc<IPatient>('PatientMaster/'+ this.patientId).valueChanges({ idField: 'docID' }).subscribe( p => {
-        this._patient.next(p);
-      });
-    }
-  }
+  // getPatientInfo():void{
+  //   if(this.patientId !=="" && this.userId !==""){
+  //     this.afs.doc<IPatient>('PatientMaster/'+ this.patientId).valueChanges({ idField: 'docID' }).subscribe( p => {
+  //       this._patient.next(p);
+  //     });
+  //   }
+  // }
 
   onAuthComplete (uid:string) :void{
     this.userId =uid;
-    this.getPatientInfo();
+    //this.getPatientInfo();
   }
   
   constructor(public afs: AngularFirestore,_authService : AuthuserService) { 
@@ -58,5 +58,9 @@ export class VitalsService {
 
   add_Temperature(tmp:ITemperature_input,pid:string ){
     this.afs.collection("PatientMaster/"+pid+"/temperature").add(tmp);
+  }
+
+  add_weight(w:IWeight_input,pid:string ){
+    this.afs.collection("PatientMaster/"+pid+"/weight").add(w);
   }
 }

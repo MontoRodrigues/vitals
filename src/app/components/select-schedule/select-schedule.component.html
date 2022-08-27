@@ -1,0 +1,94 @@
+<div class="app_main">
+    <div class="update-schedule">
+        <button type="button" class="btn btn-primary " (click)="updateSchedule()">Update Schedule</button>
+    </div>
+    <div *ngIf="SelectList!=undefined" class="selectedRow medicine_list">
+        <h2>Select From Schedle List</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" (change)="SelectAllSchedule($event)" /></th>
+                    <th>Time</th>
+                    <th>Name</th>
+                    <th>Instructions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of SelectList.ScheduleList" [class]="s.selected.toString()">
+                    <td>
+                        <input type="checkbox" [checked]="s.selected" (change)="s.selected = !s.selected" />
+                    </td>
+                    <td>
+                        <span *ngIf="s.Schedule.Time1!=null">{{s.Schedule.Time1}}</span>
+                        <span *ngIf="s.Schedule.Time2!=null">, {{s.Schedule.Time2}}</span>
+                        <span *ngIf="s.Schedule.Time3!=null">, {{s.Schedule.Time3}}</span>
+                        <span *ngIf="s.Schedule.Time4!=null">, {{s.Schedule.Time4}}</span>
+                        <span *ngIf="s.Schedule.Time5!=null">, {{s.Schedule.Time5}}</span>
+                    </td>
+                    <td>
+                        {{s.name}}
+                    </td>
+                    <td>
+                        {{s.Instruction}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="medicine_list selectedRow" *ngIf="SelectList!=undefined" style="margin-top: 45px;">
+        <h2>Select Mediciens</h2>
+
+        <table class="table" *ngFor="let p of SelectList.medicinelist">
+            <tr [class]="p.selected.toString() + ' prescription'">
+                <td>
+                    <input type="checkbox" [checked]="p.selected" (change)="SelectAllPrescription(p)" />
+                </td>
+                <td>{{p.DoctorName}}</td>
+                <td>{{getDate(p.VisitDate.seconds) | date}}</td>
+                <td>
+                    <div class="prescription_images">
+                        <div *ngFor="let im of p.imageName" class="img_cont" (click)="img_click(im)">
+                            <img class="prescription" [src]="getImageURL(im)">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding-left: 40px;">
+                    <table class="table">
+                        <tr *ngFor="let m of p.medicine" [class]="m.selected.toString()">
+                            <td>
+                                <input type="checkbox" [checked]="m.selected" (change)="m.selected = !m.selected" />
+                            </td>
+                            <td>
+                                <a [href]="m.MedicineDetail"> {{m.MedicineName}}</a>
+                            </td>
+                            <td>
+                                {{m.MedicineName}}
+                            </td>
+                            <td>
+                                <span *ngIf="m.Schedule.Time1!=null">{{m.Schedule.Time1}}</span>
+                                <span *ngIf="m.Schedule.Time2!=null">, {{m.Schedule.Time2}}</span>
+                                <span *ngIf="m.Schedule.Time3!=null">, {{m.Schedule.Time3}}</span>
+                                <span *ngIf="m.Schedule.Time4!=null">, {{m.Schedule.Time4}}</span>
+                                <span *ngIf="m.Schedule.Time5!=null">, {{m.Schedule.Time5}}</span>
+                            </td>
+                            <td>
+                                {{m.instructions}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="imagePreview" *ngIf="peview_image.show" (click)="close_img_preview()">
+        <button type="button" (click)="close_img_preview()">X</button>
+        <div class="image-preview">
+            <img [src]="peview_image.img_url">
+        </div>
+    </div>
+</div>

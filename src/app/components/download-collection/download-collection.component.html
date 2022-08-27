@@ -1,0 +1,24 @@
+<div class="app_main">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Select Collection</label>
+                <select class="form-control" (change)="GetCollection($event)"> 
+                    <option>Please select a collection</option>
+                  <option>BloodPressure</option>
+                  <option>Oxygen</option>
+                  <option>Sugar</option>
+                  <option>prescription</option>
+                  <option>prescriptionMedicine</option>
+                  <option>schedule</option>
+                  <option>scheduleStatus</option>
+                  <option>temperature</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" (click)="callCollection()"> Get Collection</button>
+        </div>
+    </div>
+
+</div>

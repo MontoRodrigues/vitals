@@ -1,44 +1,63 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<div id="menu_bg" style="display: none;" onclick="toggleSideMenu()">
-
-</div>
-
-<div id="leftMenu" style="left: -300px;">
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/home']" onclick="toggleSideMenu()">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['vitals']" onclick="toggleSideMenu()">Vitals</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="['schedule']" onclick="toggleSideMenu()">Schedule</a>
-        </li>
-    </ul>
-</div>
-
-<div class="header">
-    <div class="logo">
-        <div onclick="toggleSideMenu()"><i class="fas fa-bars"></i></div>
-        <div [routerLink]="['/']">
-            <span>Rodrigues</span> Patient Monitor
+<header class="header">
+    <div style="display: flex;">
+        <button type="button" class="hamburger-btn" onclick="toggleSideMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5px" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+        <div class="logo">
+            <a href="#">Vit<span>als</span></a>
         </div>
     </div>
+    <div class="user_image">
+        <img [src]="imgURL">
+    </div>
+</header>
 
-    <div class="user">
-        {{displayName}}
-        <button type="button" class="btn btn-outline-secondary btn-sm rounded-circle" (click)="logout()">
-          <i class="fas fa-power-off"></i>
-        </button>
+<div class="side-menu">
+    <div class="side-header ">
+        <div class="logo">
+            <a href="#">Vit<span>als</span></a>
+        </div>
+    </div>
+    <div class="side-menu-body ">
+        <div class="side-menu-user">
+            <img [src]="imgURL">
+            <h2>{{displayName}}</h2>
+        </div>
+        <div class="patient" *ngIf="patient!=undefined && patient.docID != 'undefined'">
+            <h2>Patient Details</h2>
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>: {{patient.FirstName}} {{patient.LastName}}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>: {{patient.Gender}}</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>: {{getDOB(patient.DateOfBirth.seconds)}}</td>
+                </tr>
+            </table>
+
+
+        </div>
+
+        <div *ngIf="showHideSideMenu()" class="nav-menu">
+            <ul>
+                <!-- <li>
+                    <span>App Navigation</span>
+                </li> -->
+                <li *ngFor="let n of routeList">
+                    <a *ngIf="n.name!='divider'" href="javascript:" (click)="gotoRoute(n.route)">{{n.name}}</a>
+                    <hr *ngIf="n.name=='divider'">
+                </li>
+
+            </ul>
+        </div>
     </div>
 </div>
+
 
 
 <div class="main">

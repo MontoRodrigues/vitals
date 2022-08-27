@@ -1,18 +1,18 @@
 <div class="app_main">
     <div class="container-fluid">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <h3>Prescriptions <span *ngIf="patient"> for {{patient.FirstName}} {{patient.LastName}}</span></h3>
             </div>
-        </div>
+        </div> -->
         <!-- form -->
-        <div class="row">
-            <div class="col-lg-8">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-8">
-                                <h6> Medicine Details</h6>
+                            <div class="col-lg-6">
+                                <h4> Medicine Details</h4>
                                 <div class="form-group">
                                     <label>Medicine Name</label>
                                     <input type="text" [(ngModel)]="medicineInput.MedicineName" class="form-control">
@@ -38,29 +38,89 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <h6> Medicine Schedule</h6>
-                                <div class="form-group">
-                                    <label>Time 1</label>
-                                    <input type="time" [(ngModel)]="medicineInput.Schedule.Time1" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Time 1</label>
-                                    <input type="time" [(ngModel)]="medicineInput.Schedule.Time2" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Time 1</label>
-                                    <input type="time" [(ngModel)]="medicineInput.Schedule.Time3" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Time 1</label>
-                                    <input type="time" [(ngModel)]="medicineInput.Schedule.Time4" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Time 1</label>
-                                    <input type="time" [(ngModel)]="medicineInput.Schedule.Time5" class="form-control">
-                                </div>
+                            <div class="col-lg-6">
+                                <h4> Medicine Schedule</h4>
 
+                                <div class="time">
+                                    <div class="form-group">
+                                        <label>Time 1</label>
+                                        <input type="time" [(ngModel)]="medicineInput.Schedule.Time1" class="form-control">
+                                    </div>
+                                    <div class="weekday">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" [checked]="time.time1.selected" (change)="selectChild(time.time1)">
+                                            <label class="form-check-label">All</label>
+                                        </div>
+                                        <div class="form-check form-check-inline" *ngFor="let wd of time.time1.t">
+                                            <input class="form-check-input" type="checkbox" [checked]="wd.selected" (change)="wd.selected = !wd.selected">
+                                            <label class="form-check-label">{{wd.value}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="form-group">
+                                        <label>Time 2</label>
+                                        <input type="time" [(ngModel)]="medicineInput.Schedule.Time2" class="form-control">
+                                    </div>
+                                    <div class="weekday">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" [checked]="time.time2.selected" (change)="selectChild(time.time2)">
+                                            <label class="form-check-label">All</label>
+                                        </div>
+                                        <div class="form-check form-check-inline" *ngFor="let wd of time.time2.t">
+                                            <input class="form-check-input" type="checkbox" [checked]="wd.selected" (change)="wd.selected = !wd.selected">
+                                            <label class="form-check-label">{{wd.value}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="form-group">
+                                        <label>Time 3</label>
+                                        <input type="time" [(ngModel)]="medicineInput.Schedule.Time3" class="form-control">
+                                        <div class="weekday">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" [checked]="time.time3.selected" (change)="selectChild(time.time3)">
+                                                <label class="form-check-label">All</label>
+                                            </div>
+                                            <div class="form-check form-check-inline" *ngFor="let wd of time.time3.t">
+                                                <input class="form-check-input" type="checkbox" [checked]="wd.selected" (change)="wd.selected = !wd.selected">
+                                                <label class="form-check-label">{{wd.value}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="form-group">
+                                        <label>Time 4</label>
+                                        <input type="time" [(ngModel)]="medicineInput.Schedule.Time4" class="form-control">
+                                    </div>
+                                    <div class="weekday">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" [checked]="time.time4.selected" (change)="selectChild(time.time4)">
+                                            <label class="form-check-label">All</label>
+                                        </div>
+                                        <div class="form-check form-check-inline" *ngFor="let wd of time.time4.t">
+                                            <input class="form-check-input" type="checkbox" [checked]="wd.selected" (change)="wd.selected = !wd.selected">
+                                            <label class="form-check-label">{{wd.value}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time">
+                                    <div class="form-group">
+                                        <label>Time 5</label>
+                                        <input type="time" [(ngModel)]="medicineInput.Schedule.Time5" class="form-control">
+                                    </div>
+                                    <div class="weekday">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" [checked]="time.time5.selected" (change)="selectChild(time.time5)">
+                                            <label class="form-check-label">All</label>
+                                        </div>
+                                        <div class="form-check form-check-inline" *ngFor="let wd of time.time5.t">
+                                            <input class="form-check-input" type="checkbox" [checked]="wd.selected" (change)="wd.selected = !wd.selected">
+                                            <label class="form-check-label">{{wd.value}}</label>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -82,21 +142,21 @@
                             <thead>
                                 <tr>
                                     <th>Medicine Name</th>
-                                    <th>info</th>
-                                    <th>Start Date</th>
+                                    <!-- <th>info</th> -->
+                                    <!-- <th>Start Date</th> -->
                                     <th>End Date</th>
-                                    <th>Instruction</th>
+                                    <!-- <th>Instruction</th> -->
                                     <th>Timings</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let p of medicineList">
-                                    <td>{{p.MedicineName}}</td>
-                                    <td><a [href]="p.MedicineDetail">Info</a></td>
-                                    <td>{{getDate(p.StartDate.seconds) | date}}</td>
+                                    <td><a [href]="p.MedicineDetail">{{p.MedicineName}}</a></td>
+                                    <!-- <td><a [href]="p.MedicineDetail">Info</a></td> -->
+                                    <!-- <td>{{getDate(p.StartDate.seconds) | date}}</td> -->
                                     <td>{{getDate(p.EndDate.seconds) | date}}</td>
-                                    <td>{{p.instructions}}</td>
+                                    <!-- <td>{{p.instructions}}</td> -->
                                     <td>
                                         <span *ngIf="p.Schedule.Time1!=null">{{p.Schedule.Time1}},</span>
                                         <span *ngIf="p.Schedule.Time2!=null">{{p.Schedule.Time2}},</span>
@@ -105,7 +165,7 @@
                                         <span *ngIf="p.Schedule.Time5!=null">{{p.Schedule.Time5}}</span>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" (click)="deleteMedicine(p.docID)">Delete</button>
+                                        <button type="button" class="btn btn-primary" (click)="deleteMedicine(p.docID)"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

@@ -5,7 +5,8 @@ export interface IPatient {
     Gender: string;
     Mobile:string;
     Address:string;
-    DateOfBirth: {seconds:number; nanoseconds:number;}
+    DateOfBirth: {seconds:number; nanoseconds:number;};
+    height:number | null;
 }
 
 export interface IPatient_input {
@@ -15,6 +16,7 @@ export interface IPatient_input {
     Mobile:string;
     Address:string;
     DateOfBirth: Date | null;
+    height:number | null;
 }
 
 export interface IDoctor{
