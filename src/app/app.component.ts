@@ -62,6 +62,7 @@ export class AppComponent {
     });
     
     this.auth.authState.subscribe( authState => {
+      console.log(authState)
       if(authState!==null) {
         // this.auth.user.subscribe(token =>{
         //   console.log(authState);
